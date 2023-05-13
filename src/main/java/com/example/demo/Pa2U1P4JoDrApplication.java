@@ -14,7 +14,9 @@ public class Pa2U1P4JoDrApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("Mi primer proyecto.");
-		
+		/*Spring Framework: esto es un framework que permite la 
+		construccion/desarrollo de aplicaciones empresariales basadas en spring
+		*/
 	}
 
 }
