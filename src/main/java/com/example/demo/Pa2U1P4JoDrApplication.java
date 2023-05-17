@@ -3,6 +3,7 @@ package com.example.demo;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,6 +11,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Pa2U1P4JoDrApplication implements CommandLineRunner{
 
+	@Autowired //Anotacion de inyeccion
+	private Profesor profe2;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U1P4JoDrApplication.class, args);
 	}
@@ -27,8 +31,26 @@ public class Pa2U1P4JoDrApplication implements CommandLineRunner{
 		p.setCedula("1725051146");
 		p.setFech_nacimineto(LocalDateTime.now());
 		
-		System.out.print(p);
+		System.out.println(p);
+	
+		profe2 = new Profesor();
+		profe2.setApellido("Ocapana");
+		System.out.println(profe2);
+		/*
+		Profesor profe3;
+		profe3 =p;
+		System.out.println(profe3);
+		p.setApellido("GGGGG");
+		System.out.println(profe3);
+		profe3.setApellido("77777");
+		System.out.println(profe3);
+		*/
+		MatriculaCalculo mat = new MatriculaCalculo();
+		mat.realizarMatricula("1");
 		
+		
+		//System.out.println(profe2.getApellido()); error porque quiero acceder a algo que es NULL
+		// null pointer exception --> estas queriendo acceder a un atributo de null
 	}
 
 }
