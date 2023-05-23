@@ -2,55 +2,79 @@ package com.example.demo;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
-public class Pa2U1P4JoDrApplication implements CommandLineRunner{
+import com.example.demo.repository.modelo.Estudiante;
+import com.example.demo.service.EstudianteService;
 
-	@Autowired //Anotacion de inyeccion
-	private Profesor profe2;
-	
+@SpringBootApplication
+public class Pa2U1P4JoDrApplication implements CommandLineRunner {
+
+	@Autowired
+	private EstudianteService estudianteService;
+
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U1P4JoDrApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println("Mi primer proyecto.");
-		/*Spring Framework: esto es un framework que permite la 
-		construccion/desarrollo de aplicaciones empresariales basadas en spring
-		*/
-		Profesor p = new Profesor();
+
+		// cREAR ESTUDIANTE
+		Estudiante miEstudiante = new Estudiante();
+		Estudiante miEstudiante2 = new Estudiante();
+
+		miEstudiante.setNombre("Diego");
+		miEstudiante.setApellido("Rivas");
+		miEstudiante.setCedula("1725051146");
+		miEstudiante.setFechaNacimiento(LocalDateTime.of(1997, 1, 8, 12, 12));
+
+		miEstudiante2.setNombre("Jouse");
+		miEstudiante2.setApellido("Ocapana");
+		miEstudiante2.setCedula("172525516");
+		miEstudiante2.setFechaNacimiento(LocalDateTime.of(2000, 6, 1, 12, 12));
+		// 1.- GUARDAR ESTUDIANTE
+		this.estudianteService.guardar(miEstudiante);
+		this.estudianteService.guardar(miEstudiante2);
+
+		// 5.- Imprimir reporte
+		List<Estudiante> reporte = this.estudianteService.reporteDeTodos();
+		System.out.println("REPORTE DE TODOS LOS ESTUDIANTES");
+		for (Estudiante estu : reporte) {
+			System.out.println(estu);
+		}
+
+		// 2.- Actualizar
+		miEstudiante.setApellido("Haro");
+		this.estudianteService.actualizar(miEstudiante);
+
+		// 5.- Imprimir reporte
+		List<Estudiante> reporte2 = this.estudianteService.reporteDeTodos();
+		System.out.println("REPORTE 2 DE TODOS LOS ESTUDIANTES");
+		for (Estudiante estu : reporte2) {
+			System.out.println(estu);
+
+		}
+
+		// 3. Eliminar
+		this.estudianteService.borrar("1725051146");
+
+		// 5.- Imprimir reporte
+		List<Estudiante> reporte3 = this.estudianteService.reporteDeTodos();
+		System.out.println("REPORTE 2 DE TODOS LOS ESTUDIANTES");
+		for (Estudiante estu : reporte3) {
+			System.out.println(estu);
+		}
 		
-		p.setNombre("Diego");
-		p.setApellido("Rivas");
-		p.setCedula("1725051146");
-		p.setFech_nacimineto(LocalDateTime.now());
-		
-		System.out.println(p);
-	
-		profe2 = new Profesor();
-		profe2.setApellido("Ocapana");
-		System.out.println(profe2);
-		/*
-		Profesor profe3;
-		profe3 =p;
-		System.out.println(profe3);
-		p.setApellido("GGGGG");
-		System.out.println(profe3);
-		profe3.setApellido("77777");
-		System.out.println(profe3);
-		*/
-		MatriculaCalculo mat = new MatriculaCalculo();
-		mat.realizarMatricula("1");
-		
-		
-		//System.out.println(profe2.getApellido()); error porque quiero acceder a algo que es NULL
-		// null pointer exception --> estas queriendo acceder a un atributo de null
+		//Buscar e imprimir y otra funcionalidad donde busque la cedula que no existe
+		System.out.println("//////////////");
+		this.estudianteService.buscarPorCedula("0000045245");
+
 	}
 
 }
