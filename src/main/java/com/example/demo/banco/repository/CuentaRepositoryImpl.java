@@ -43,7 +43,7 @@ private static List<Cuenta> baseDatos = new ArrayList<>();
 				cuentaEncontrada = cuenta;
 				System.out.println(cuenta);
 			}else { //	PRUEBAS
-				System.out.println("USUARIO NO EXISTENTE EN BASE DE DATOS");
+				//System.out.println("USUARIO NO EXISTENTE EN BASE DE DATOS");
 			}
 
 		}

@@ -1,6 +1,7 @@
 package com.example.demo.banco.service;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import com.example.demo.banco.repository.modelo.Transferencia;
 
@@ -15,6 +16,8 @@ public interface TransferenciaService {
 	public Transferencia buscarPorNumero(String numero);
 
 	public void realizar(String cuentaOrigen, String cuentaDestino, BigDecimal monto);
+	
+	public List<Transferencia> estadoCuenta(String numeroCuenta);
 	/*
 	 * TENER LA HABILIDAD DE SABER QUE METODOS DEBO RECIBIR DEPENDIENDO DEL CASO LOS
 	 * METODOS DE NEGOCIO, LA MENOR CANTIDAD DE DATOS NECESARIOS SIEMPRE PENSAR EN
