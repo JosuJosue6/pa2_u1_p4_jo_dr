@@ -54,34 +54,7 @@ public class Pa2U1P4JoDrApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		this.cajero.setApellido("Ocapana");
-		this.cajero.setNombre("Josue");
-		this.cajero.setSalario(new BigDecimal(1000));
-		
-		this.cajero1.setApellido("Rivas");
-		this.cajero.setNombre("Diego");
-		this.cajero1.setSalario(new BigDecimal(1000));
-		
-		this.presidente.setApellido("Lasso");
-		this.presidente.setNombre("Guillermo");
-		this.presidente.setCedula("123456789");
-		this.presidente1.setApellido("Toro");
-		
-		System.out.println(this.cajero);
-		System.out.println(this.cajero1);
-		System.out.println(this.cajero1.getApellido());
-		System.out.println(this.presidente);
-		System.out.println(this.presidente1);
-		
-		System.out.println("\n||||°°°°°°°°SEGUNDA PARTE*°°°°°||||");
-		this.cargaSistemaService.cargar();
-		Transferencia transferencia = new Transferencia();
-		transferencia.setCuentaD(null);
-		transferencia.setCuentaOrigen(null);
-		transferencia.setFecha(LocalDateTime.now());
-		transferencia.setMonto(new BigDecimal(12134));
-		transferencia.setNumero("123");
-		this.transferenciaService.guardar(transferencia);
+		//22222222
 
 	}
 
